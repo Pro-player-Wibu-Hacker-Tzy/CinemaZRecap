@@ -1,4 +1,4 @@
-package org.example;
+package movieapp;
 
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;

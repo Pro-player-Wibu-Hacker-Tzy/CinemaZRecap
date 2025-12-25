@@ -1,7 +1,7 @@
 package movieapp;
 
-import java.awt.GridLayout;
 import javax.swing.*;
+import java.awt.*;
 import java.util.ArrayList;
 
 public class FilmForm extends JFrame {
@@ -9,6 +9,7 @@ public class FilmForm extends JFrame {
     JTextField tGenre = new JTextField();
     JTextField tYear = new JTextField();
     JTextField tDuration = new JTextField();
+
     Film editFilm;
 
     public FilmForm(Film film) {
@@ -31,6 +32,7 @@ public class FilmForm extends JFrame {
         JButton save = new JButton("Simpan");
         add(save);
 
+        // Jika mode EDIT → isi data ke form
         if (film != null) {
             tTitle.setText(film.getTitle());
             tGenre.setText(film.getGenre());
@@ -52,14 +54,22 @@ public class FilmForm extends JFrame {
             int year = Integer.parseInt(tYear.getText());
             int duration = Integer.parseInt(tDuration.getText());
 
+            // MODE TAMBAH
             if (editFilm == null) {
                 int id = list.size() + 1;
                 list.add(new Film(id, title, genre, year, duration));
-            } else {
-                editFilm.setTitle(title);
-                editFilm.setGenre(genre);
-                editFilm.setYear(year);
-                editFilm.setDuration(duration);
+            }
+            // MODE EDIT
+            else {
+                for (Film f : list) {
+                    if (f.getId() == editFilm.getId()) {
+                        f.setTitle(title);
+                        f.setGenre(genre);
+                        f.setYear(year);
+                        f.setDuration(duration);
+                        break;
+                    }
+                }
             }
 
             FilmFileHandler.save(list);

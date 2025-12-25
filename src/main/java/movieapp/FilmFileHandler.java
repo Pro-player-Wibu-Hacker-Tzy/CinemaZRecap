@@ -1,4 +1,4 @@
-package org.example;
+package movieapp;
 
 import java.io.*;
 import java.util.ArrayList;
