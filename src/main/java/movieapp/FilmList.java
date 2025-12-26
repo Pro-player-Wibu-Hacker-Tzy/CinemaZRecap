@@ -36,7 +36,18 @@ public class FilmList extends JFrame {
         searchField = new JTextField(20);
         JButton searchBtn = new JButton("Cari");
 
-        searchBtn.addActionListener(e -> searchData());
+        searchField.getDocument().addDocumentListener(new javax.swing.event.DocumentListener() {
+            public void insertUpdate(javax.swing.event.DocumentEvent e) {
+                searchData();
+            }
+            public void removeUpdate(javax.swing.event.DocumentEvent e) {
+                searchData();
+            }
+            public void changedUpdate(javax.swing.event.DocumentEvent e) {
+                searchData();
+            }
+        });
+
 
         JPanel topPanel = new JPanel(new FlowLayout(FlowLayout.LEFT));
         topPanel.add(new JLabel("Cari:"));
