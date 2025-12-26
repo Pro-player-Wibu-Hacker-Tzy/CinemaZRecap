@@ -56,9 +56,17 @@ public class FilmForm extends JFrame {
 
             // MODE TAMBAH
             if (editFilm == null) {
-                int id = list.size() + 1;
-                list.add(new Film(id, title, genre, year, duration));
+                int maxId = 0;
+                for (Film f : list) {
+                    if (f.getId() > maxId) {
+                        maxId = f.getId();
+                    }
+                }
+                int newId = maxId + 1;
+                list.add(new Film(newId, title, genre, year, duration));
             }
+
+
             // MODE EDIT
             else {
                 for (Film f : list) {
