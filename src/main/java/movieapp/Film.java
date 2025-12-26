@@ -28,6 +28,6 @@ public class Film {
     public void setDuration(int duration) { this.duration = duration; }
 
     public String toCSV() {
-        return id + "," + title + "," + genre + "," + year + "," + duration;
+        return id + "|" + title + "|" + genre + "|" + year + "|" + duration;
     }
 }
